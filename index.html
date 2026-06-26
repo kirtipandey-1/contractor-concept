@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ridge & Sons Construction — Sample Concept</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --steel: #1c2533;
+      --steel-mid: #2e3d52;
+      --orange: #e86c2c;
+      --orange-light: #f0894e;
+      --light: #f4f2ee;
+      --mid: #8a8f96;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--light); color: var(--steel); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
+
+    /* DEMO BANNER */
+    .demo-bar { background: var(--orange); color: #fff; text-align: center; padding: 0.55rem 1rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+
+    /* NAV */
+    nav { background: var(--steel); display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 3rem; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; text-transform: uppercase; }
+    .nav-brand span { color: var(--orange); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: var(--orange); color: #fff; padding: 0.6rem 1.4rem; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--orange-light); }
+
+    /* HERO */
+    .hero { background: var(--steel); min-height: 88vh; display: flex; align-items: center; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px); }
+    .hero-inner { position: relative; z-index: 1; padding: 6rem 3rem; max-width: 1100px; margin: 0 auto; width: 100%; }
+    .hero-tag { display: inline-block; background: var(--orange); color: #fff; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.3rem 0.8rem; margin-bottom: 2rem; }
+    .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 800; color: #fff; text-transform: uppercase; line-height: 0.9; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--orange); font-style: normal; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 520px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .hero-badges { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .badge { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); border-left: 2px solid var(--orange); padding-left: 0.75rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 0.9rem 2rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: var(--orange-light); }
+    .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .btn-outline:hover { border-color: #fff; color: #fff; }
+
+    /* STATS STRIP */
+    .stats-strip { background: var(--orange); display: grid; grid-template-columns: repeat(4,1fr); }
+    .sstat { padding: 2rem 1.5rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2); }
+    .sstat:last-child { border-right: none; }
+    .sstat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
+    .sstat-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.75); margin-top: 0.3rem; }
+
+    /* SERVICES */
+    section { padding: 6rem 3rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); font-weight: 600; display: block; margin-bottom: 1rem; }
+    h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; text-transform: uppercase; line-height: 1; margin-bottom: 3rem; color: var(--steel); }
+    h2 em { color: var(--orange); font-style: normal; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(28,37,51,0.12); }
+    .svc { background: var(--light); padding: 2.5rem 2rem; }
+    .svc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(28,37,51,0.08); line-height: 1; margin-bottom: 1rem; }
+    .svc h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .svc p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+    .svc-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+
+    /* PORTFOLIO */
+    #portfolio { background: var(--steel); }
+    #portfolio h2 { color: #fff; }
+    .port-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); }
+    .port-card { background: var(--steel-mid); padding: 3rem 2rem; position: relative; overflow: hidden; }
+    .port-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--orange); transform: scaleX(0); transition: transform 0.3s; }
+    .port-card:hover::before { transform: scaleX(1); }
+    .port-type { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; display: block; }
+    .port-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; color: #fff; margin-bottom: 0.5rem; }
+    .port-card p { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .port-img { height: 160px; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img { height: 420px; background: var(--steel); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.2); border: 1px dashed rgba(28,37,51,0.2); }
+    .about-content p { font-size: 0.95rem; color: #4a5568; line-height: 1.85; margin-bottom: 1.25rem; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+    .check-list li { font-size: 0.88rem; padding-left: 1.5rem; position: relative; color: var(--steel); }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+
+    /* CTA */
+    .cta-section { background: var(--orange); text-align: center; padding: 5rem 3rem; }
+    .cta-section h2 { color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.85); font-size: 1rem; margin-bottom: 2rem; }
+    .btn-white { background: #fff; color: var(--orange); }
+    .btn-white:hover { background: var(--light); }
+
+    /* FOOTER */
+    footer { background: var(--steel); color: rgba(255,255,255,0.4); padding: 2rem 3rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; letter-spacing: 0.06em; }
+    footer strong { color: rgba(255,255,255,0.7); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero-inner { padding: 4rem 1.5rem; }
+      section { padding: 4rem 1.5rem; }
+      .services-grid, .port-grid { grid-template-columns: 1fr; }
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-bar">Sample website concept · for demonstration only · Stubborn by Design</div>
+
+<nav>
+  <a class="nav-brand" href="#"><span>Ridge</span> & Sons</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Estimate</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Licensed & Insured · Northern Virginia</div>
+    <h1>Built to<br><em>Last.</em></h1>
+    <p class="hero-sub">Full-service contracting for residential and commercial projects. From the ground up or renovation ready — we show up, we get it done, and we stand behind our work.</p>
+    <div class="hero-badges">
+      <div class="badge">General Contracting</div>
+      <div class="badge">Electrical</div>
+      <div class="badge">Plumbing</div>
+      <div class="badge">Landscaping</div>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Get a Free Estimate</a>
+      <a href="#work" class="btn btn-outline">See Our Work</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="sstat"><div class="sstat-num">15+</div><div class="sstat-label">Years in Business</div></div>
+  <div class="sstat"><div class="sstat-num">500+</div><div class="sstat-label">Projects Completed</div></div>
+  <div class="sstat"><div class="sstat-num">100%</div><div class="sstat-label">Licensed & Bonded</div></div>
+  <div class="sstat"><div class="sstat-num">5★</div><div class="sstat-label">Average Rating</div></div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2>Every Job,<br><em>Done Right.</em></h2>
+    <div class="services-grid">
+      <div class="svc">
+        <div class="svc-num">01</div>
+        <h3>General Contracting</h3>
+        <p>New builds, additions, and full renovations. We manage every phase so you don't have to coordinate a dozen subs.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">02</div>
+        <h3>Electrical</h3>
+        <p>Panel upgrades, new circuits, EV charger installation, and full rewiring. Code-compliant, every time.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">03</div>
+        <h3>Plumbing</h3>
+        <p>Fixtures, water heaters, repiping, and drain work. Emergency repairs and full bathroom/kitchen rough-ins.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">04</div>
+        <h3>Roofing</h3>
+        <p>Tear-off and replacement, leak repair, gutters, and fascia. Storm damage? We work directly with insurance adjusters.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">05</div>
+        <h3>Landscaping</h3>
+        <p>Hardscaping, sod, retaining walls, irrigation, and seasonal cleanup. Your curb appeal is our opening argument.</p>
+      </div>
+      <div class="svc">
+        <div class="svc-num">06</div>
+        <h3>Interior Finish</h3>
+        <p>Drywall, painting, flooring, trim, and tile. We don't stop at the rough — we see it through to the final coat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="padding: 6rem 3rem; background: var(--steel);">
+  <div class="container">
+    <span class="section-label" style="color: var(--orange);">Recent Projects</span>
+    <h2 style="color: #fff;">Built With<br><em>Our Hands.</em></h2>
+    <div class="port-grid">
+      <div class="port-card">
+        <div class="port-img">Project Photo</div>
+        <span class="port-type">Full Renovation · Ashburn, VA</span>
+        <h3>Kitchen & Bath Gut</h3>
+        <p>Complete demo and rebuild. New layout, custom cabinetry, tile work, and all new plumbing and electrical.</p>
+      </div>
+      <div class="port-card">
+        <div class="port-img">Project Photo</div>
+        <span class="port-type">New Build · Sterling, VA</span>
+        <h3>Deck & Patio Addition</h3>
+        <p>2,400 sq ft composite deck with pergola, outdoor kitchen rough-in, and integrated landscape lighting.</p>
+      </div>
+      <div class="port-card">
+        <div class="port-img">Project Photo</div>
+        <span class="port-type">Commercial · Leesburg, VA</span>
+        <h3>Office Build-Out</h3>
+        <p>Full tenant improvement for 3,800 sq ft office space. Electrical, HVAC coordination, drywall, and finishes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">Team / Job Site Photo</div>
+      <div class="about-content">
+        <span class="section-label">About Us</span>
+        <h2>Local Crew.<br><em>Real Work.</em></h2>
+        <p>Ridge & Sons has been serving Northern Virginia homeowners and businesses since 2009. We're not a national franchise — we're your neighbors, and we've built half the additions and remodels in this zip code.</p>
+        <p>Every estimate is honest. Every timeline is realistic. Every job ends with a walkthrough before you sign off.</p>
+        <ul class="check-list">
+          <li>Virginia Class A Contractor License</li>
+          <li>Fully insured — liability & workers' comp</li>
+          <li>3-year workmanship warranty on all projects</li>
+          <li>No subcontractor surprises — our crew, your job</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="container">
+    <h2>Ready to Build?</h2>
+    <p>Free estimates. No pressure. Just straight talk about your project.</p>
+    <a href="tel:7038592958" class="btn btn-white">(703) 859-2958 — Call Now</a>
+  </div>
+</section>
+
+<footer>
+  <span>© Ridge & Sons Construction · Northern Virginia</span>
+  <span>Site built by <strong>Stubborn by Design</strong> · <a href="https://stubbornbydesign.com" style="color:var(--orange);text-decoration:none;">stubbornbydesign.com</a> · (703) 859-2958</span>
+</footer>
+
+</body>
+</html>
